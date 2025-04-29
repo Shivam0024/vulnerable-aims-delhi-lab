@@ -1,73 +1,74 @@
-# Welcome to your Lovable project
 
-## Project info
+# Vulnerable Hospital Management System
 
-**URL**: https://lovable.dev/projects/d890a47b-bd63-4557-8c1f-771577894570
+## IMPORTANT DISCLAIMER
 
-## How can I edit this code?
+This project contains **INTENTIONALLY VULNERABLE CODE** designed for educational purposes only. It demonstrates common web security vulnerabilities such as:
 
-There are several ways of editing your application.
+- SQL Injection
+- Cross-Site Scripting (XSS)
+- Cross-Site Request Forgery (CSRF)
+- Insecure Direct Object References
+- Security Misconfigurations
+- Authentication Bypasses
 
-**Use Lovable**
+**DO NOT DEPLOY THIS APPLICATION IN A PRODUCTION ENVIRONMENT OR USE IT WITH REAL DATA.**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/d890a47b-bd63-4557-8c1f-771577894570) and start prompting.
+## About This Project
 
-Changes made via Lovable will be committed automatically to this repo.
+This is a deliberately insecure hospital management system inspired by AIMS Delhi that showcases various security vulnerabilities for educational purposes. Use it to learn about common web application security issues, how they can be exploited, and how to fix them.
 
-**Use your preferred IDE**
+## Security Vulnerabilities Demonstrated
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### SQL Injection
+- Patient search and registration forms contain unparameterized SQL queries
+- Login form is vulnerable to authentication bypass
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Cross-Site Scripting (XSS)
+- Reflected XSS via URL parameters
+- Stored XSS via localStorage
+- DOM-based XSS in search functionality
 
-Follow these steps:
+### Insecure Direct Object References
+- Patient records accessible by changing IDs in URLs
+- No proper authorization checks
+
+### Other Vulnerabilities
+- Weak authentication mechanisms
+- Dangerous use of eval() and innerHTML
+- CSRF vulnerabilities (no anti-CSRF tokens)
+- Sensitive data exposure
+
+## Learning Resources
+
+To learn more about web application security, check out:
+- [OWASP Top 10](https://owasp.org/www-project-top-ten/)
+- [PortSwigger Web Security Academy](https://portswigger.net/web-security)
+- [MDN Web Security](https://developer.mozilla.org/en-US/docs/Web/Security)
+
+## Project Structure
+
+The application includes:
+- Patient management
+- Doctor profiles
+- Appointment scheduling
+- Medical records
+- Admin dashboard
+
+## How to Use
+
+This project is built with React, TypeScript, and Tailwind CSS.
+
+### Starting the Development Server
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Can I Deploy This?
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+NO! This application is for educational purposes only and contains serious security vulnerabilities. It should only be run in a controlled, isolated environment.
 
-**Use GitHub Codespaces**
+## License
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/d890a47b-bd63-4557-8c1f-771577894570) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+This project is available for educational use only.

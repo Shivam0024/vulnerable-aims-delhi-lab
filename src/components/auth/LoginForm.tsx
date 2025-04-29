@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
@@ -23,19 +22,18 @@ const LoginForm: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Vulnerable: Authentication bypass
-    // This is an intentionally vulnerable login validation
-    // In a real app, you'd NEVER do this - always use secure authentication
-    if (credentials.username.toLowerCase() === 'admin') {
+    // Vulnerable: Authentication bypass - hardcoded credentials and admin check
+    if (credentials.username.toLowerCase() === 'admin' || 
+        (credentials.username === 'bharatelectornic' && credentials.password === 'Crlgad@123')) {
       console.log("Login successful (but vulnerable)");
       localStorage.setItem('user', JSON.stringify({ 
-        name: 'Admin User', 
+        name: credentials.username === 'admin' ? 'Admin User' : 'Bharat Electronic', 
         role: 'administrator',
         token: 'fake-jwt-token'
       }));
       toast({
         title: "Login successful",
-        description: "Welcome back, Admin!",
+        description: `Welcome back, ${credentials.username === 'admin' ? 'Admin' : 'Bharat Electronic'}!`,
       });
       navigate('/');
     } else {

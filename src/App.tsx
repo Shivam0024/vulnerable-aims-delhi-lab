@@ -8,6 +8,10 @@ import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Patients from "./pages/Patients";
 import AddPatient from "./pages/AddPatient";
+import Doctors from "./pages/Doctors";
+import Appointments from "./pages/Appointments";
+import MedicalRecords from "./pages/MedicalRecords";
+import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +27,12 @@ const App = () => (
           <Route path="/login" element={<Login />} />
           <Route path="/patients" element={<Patients />} />
           <Route path="/patients/add" element={<AddPatient />} />
+          <Route path="/doctors" element={<Doctors />} />
+          <Route path="/doctors/schedule" element={<Doctors />} />
+          <Route path="/appointments" element={<Appointments />} />
+          <Route path="/appointments/book" element={<Appointments />} />
+          <Route path="/medical-records" element={<MedicalRecords />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

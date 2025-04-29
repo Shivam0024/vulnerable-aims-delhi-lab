@@ -6,7 +6,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/componen
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { FileUpload, Upload } from 'lucide-react';
+import { FileText, Upload } from 'lucide-react';
 
 const UploadReport: React.FC = () => {
   const { toast } = useToast();
@@ -63,7 +63,7 @@ const UploadReport: React.FC = () => {
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold">Upload Medical Report</h1>
           <div className="bg-hospital-blue p-2 rounded-full text-white">
-            <FileUpload className="h-6 w-6" />
+            <FileText className="h-6 w-6" />
           </div>
         </div>
         

@@ -1,10 +1,12 @@
 
 import React from 'react';
-import { Users, Calendar, FileText, Activity } from 'lucide-react';
+import { Users, Calendar, FileText, Activity, Upload } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import StatCard from '@/components/dashboard/StatCard';
 import RecentPatients from '@/components/dashboard/RecentPatients';
 import UpcomingAppointments from '@/components/dashboard/UpcomingAppointments';
+import { Button } from '@/components/ui/button';
 
 const Index: React.FC = () => {
   return (
@@ -38,6 +40,15 @@ const Index: React.FC = () => {
           value="3" 
           icon={<Users size={24} />}
         />
+      </div>
+      
+      <div className="mb-6">
+        <Link to="/upload-report">
+          <Button className="bg-hospital-blue hover:bg-blue-700">
+            <Upload className="mr-2 h-4 w-4" />
+            Upload New Medical Report
+          </Button>
+        </Link>
       </div>
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

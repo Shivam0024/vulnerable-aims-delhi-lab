@@ -11,6 +11,7 @@ import AddPatient from "./pages/AddPatient";
 import Doctors from "./pages/Doctors";
 import Appointments from "./pages/Appointments";
 import MedicalRecords from "./pages/MedicalRecords";
+import UploadReport from "./pages/UploadReport";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/appointments" element={<Appointments />} />
           <Route path="/appointments/book" element={<Appointments />} />
           <Route path="/medical-records" element={<MedicalRecords />} />
+          <Route path="/upload-report" element={<UploadReport />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

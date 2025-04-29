@@ -1,10 +1,9 @@
-
 import React, { useState } from 'react';
 import Layout from '@/components/layout/Layout';
 import { Table, TableHeader, TableBody, TableHead, TableRow, TableCell } from '@/components/ui/table';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
-import { calendar, clock } from 'lucide-react';
+import { Calendar, Clock } from 'lucide-react';
 
 const mockAppointments = [
   { id: 101, patient: "Rajesh Kumar", doctor: "Dr. Sharma", date: "2025-04-30", time: "10:00 AM", status: "Confirmed" },
@@ -53,7 +52,7 @@ const Appointments: React.FC = () => {
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold">Appointments</h1>
           <div className="bg-hospital-blue p-2 rounded-full text-white">
-            <calendar className="h-6 w-6" />
+            <Calendar className="h-6 w-6" />
           </div>
         </div>
 
@@ -188,7 +187,7 @@ const Appointments: React.FC = () => {
                 
                 <div className="flex items-center mt-6">
                   <Button type="submit" className="bg-hospital-blue hover:bg-blue-700">
-                    <clock className="h-4 w-4 mr-2" />
+                    <Clock className="h-4 w-4 mr-2" />
                     Book Appointment
                   </Button>
                 </div>

@@ -3,14 +3,15 @@ import React from 'react';
 import Layout from '@/components/layout/Layout';
 import { Table, TableHeader, TableBody, TableHead, TableRow, TableCell } from '@/components/ui/table';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { shield } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Shield } from 'lucide-react';
 
 const mockDoctors = [
-  { id: 1, name: "Dr. Sharma", specialty: "Cardiology", experience: "15 years", availability: "Mon, Wed, Fri" },
-  { id: 2, name: "Dr. Gupta", specialty: "Neurology", experience: "12 years", availability: "Tue, Thu, Sat" },
-  { id: 3, name: "Dr. Patel", specialty: "Pediatrics", experience: "8 years", availability: "Mon, Tue, Wed" },
-  { id: 4, name: "Dr. Singh", specialty: "Orthopedics", experience: "10 years", availability: "Wed, Thu, Fri" },
-  { id: 5, name: "Dr. Kumar", specialty: "General Medicine", experience: "14 years", availability: "Mon, Fri, Sat" }
+  { id: 1, name: "Dr. Sharma", specialty: "Cardiology", experience: "15 years", availability: "Mon, Wed, Fri", contact: "+91 98765 43210" },
+  { id: 2, name: "Dr. Gupta", specialty: "Neurology", experience: "12 years", availability: "Tue, Thu, Sat", contact: "+91 87654 32109" },
+  { id: 3, name: "Dr. Patel", specialty: "Pediatrics", experience: "10 years", availability: "Mon, Tue, Fri", contact: "+91 76543 21098" },
+  { id: 4, name: "Dr. Singh", specialty: "Orthopedics", experience: "14 years", availability: "Wed, Thu, Sat", contact: "+91 65432 10987" },
+  { id: 5, name: "Dr. Kumar", specialty: "General Medicine", experience: "8 years", availability: "Mon, Wed, Sat", contact: "+91 54321 09876" }
 ];
 
 const Doctors: React.FC = () => {
@@ -18,12 +19,12 @@ const Doctors: React.FC = () => {
     <Layout>
       <div className="space-y-6">
         <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold">Doctors Management</h1>
+          <h1 className="text-2xl font-bold">Doctors</h1>
           <div className="bg-hospital-blue p-2 rounded-full text-white">
-            <shield className="h-6 w-6" />
+            <Shield className="h-6 w-6" />
           </div>
         </div>
-
+        
         <Tabs defaultValue="all-doctors">
           <TabsList>
             <TabsTrigger value="all-doctors">All Doctors</TabsTrigger>
@@ -31,65 +32,74 @@ const Doctors: React.FC = () => {
           </TabsList>
           
           <TabsContent value="all-doctors" className="mt-4">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Name</TableHead>
-                  <TableHead>Specialty</TableHead>
-                  <TableHead>Experience</TableHead>
-                  <TableHead>Availability</TableHead>
-                  <TableHead>Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {mockDoctors.map(doctor => (
-                  <TableRow key={doctor.id}>
-                    <TableCell>{doctor.name}</TableCell>
-                    <TableCell>{doctor.specialty}</TableCell>
-                    <TableCell>{doctor.experience}</TableCell>
-                    <TableCell>{doctor.availability}</TableCell>
-                    <TableCell>
-                      <button className="text-hospital-blue hover:underline">View Profile</button>
-                    </TableCell>
+            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Name</TableHead>
+                    <TableHead>Specialty</TableHead>
+                    <TableHead>Experience</TableHead>
+                    <TableHead>Availability</TableHead>
+                    <TableHead>Contact</TableHead>
+                    <TableHead>Actions</TableHead>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+                </TableHeader>
+                <TableBody>
+                  {mockDoctors.map(doctor => (
+                    <TableRow key={doctor.id}>
+                      <TableCell className="font-medium">{doctor.name}</TableCell>
+                      <TableCell>{doctor.specialty}</TableCell>
+                      <TableCell>{doctor.experience}</TableCell>
+                      <TableCell>{doctor.availability}</TableCell>
+                      <TableCell>{doctor.contact}</TableCell>
+                      <TableCell>
+                        <Button variant="outline" size="sm">Book Appointment</Button>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
           </TabsContent>
           
           <TabsContent value="schedule" className="mt-4">
-            <div className="border rounded-md p-6 bg-white">
-              <h2 className="text-lg font-semibold mb-4">Doctor Schedule - April 2025</h2>
-              <div className="grid grid-cols-7 gap-2 text-center">
-                <div className="bg-gray-100 p-2 font-medium">Monday</div>
-                <div className="bg-gray-100 p-2 font-medium">Tuesday</div>
-                <div className="bg-gray-100 p-2 font-medium">Wednesday</div>
-                <div className="bg-gray-100 p-2 font-medium">Thursday</div>
-                <div className="bg-gray-100 p-2 font-medium">Friday</div>
-                <div className="bg-gray-100 p-2 font-medium">Saturday</div>
-                <div className="bg-gray-100 p-2 font-medium">Sunday</div>
-                
-                {/* Week 1 */}
-                {[...Array(7)].map((_, i) => (
-                  <div key={i} className="border p-2 min-h-20">
-                    <div className="text-xs text-right text-gray-500">{i + 1}</div>
-                    {i < 5 && (
-                      <div className="text-xs mt-1 bg-hospital-lightblue p-1 rounded">
-                        {mockDoctors[i % 5].name}: 9AM - 1PM
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <h2 className="text-lg font-semibold mb-4">Doctor Schedule</h2>
+              <div className="grid grid-cols-7 gap-4 mb-4 text-center">
+                <div className="font-medium">Monday</div>
+                <div className="font-medium">Tuesday</div>
+                <div className="font-medium">Wednesday</div>
+                <div className="font-medium">Thursday</div>
+                <div className="font-medium">Friday</div>
+                <div className="font-medium">Saturday</div>
+                <div className="font-medium">Sunday</div>
+              </div>
+              
+              <div className="space-y-6">
+                {mockDoctors.map(doctor => (
+                  <div key={doctor.id} className="border-b pb-4">
+                    <div className="font-medium mb-2">{doctor.name} - {doctor.specialty}</div>
+                    <div className="grid grid-cols-7 gap-4 text-center">
+                      <div className={doctor.availability.includes('Mon') ? "bg-green-100 p-2 rounded" : "p-2"}>
+                        {doctor.availability.includes('Mon') ? '9AM - 2PM' : '-'}
                       </div>
-                    )}
-                  </div>
-                ))}
-                
-                {/* Week 2 */}
-                {[...Array(7)].map((_, i) => (
-                  <div key={i+7} className="border p-2 min-h-20">
-                    <div className="text-xs text-right text-gray-500">{i + 8}</div>
-                    {i < 5 && (
-                      <div className="text-xs mt-1 bg-hospital-lightblue p-1 rounded">
-                        {mockDoctors[(i + 2) % 5].name}: 9AM - 1PM
+                      <div className={doctor.availability.includes('Tue') ? "bg-green-100 p-2 rounded" : "p-2"}>
+                        {doctor.availability.includes('Tue') ? '9AM - 2PM' : '-'}
                       </div>
-                    )}
+                      <div className={doctor.availability.includes('Wed') ? "bg-green-100 p-2 rounded" : "p-2"}>
+                        {doctor.availability.includes('Wed') ? '9AM - 2PM' : '-'}
+                      </div>
+                      <div className={doctor.availability.includes('Thu') ? "bg-green-100 p-2 rounded" : "p-2"}>
+                        {doctor.availability.includes('Thu') ? '9AM - 2PM' : '-'}
+                      </div>
+                      <div className={doctor.availability.includes('Fri') ? "bg-green-100 p-2 rounded" : "p-2"}>
+                        {doctor.availability.includes('Fri') ? '9AM - 2PM' : '-'}
+                      </div>
+                      <div className={doctor.availability.includes('Sat') ? "bg-green-100 p-2 rounded" : "p-2"}>
+                        {doctor.availability.includes('Sat') ? '9AM - 2PM' : '-'}
+                      </div>
+                      <div>-</div>
+                    </div>
                   </div>
                 ))}
               </div>

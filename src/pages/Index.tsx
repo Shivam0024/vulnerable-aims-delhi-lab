@@ -10,33 +10,33 @@ const Index: React.FC = () => {
   return (
     <Layout>
       <div className="mb-6">
-        <h1 className="text-3xl font-bold text-gray-800">Dashboard</h1>
-        <p className="text-gray-600">Welcome to AIMS Hospital Management System</p>
+        <h1 className="text-3xl font-bold text-gray-800">Patient Portal</h1>
+        <p className="text-gray-600">Welcome to AIMS Hospital Patient Management System</p>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <StatCard 
-          title="Total Patients" 
-          value="1,342" 
-          icon={<Users size={24} />} 
-          trend={{ value: 12, isUp: true }}
-        />
-        <StatCard 
-          title="Appointments" 
-          value="48" 
+          title="Your Appointments" 
+          value="5" 
           icon={<Calendar size={24} />} 
-          trend={{ value: 3, isUp: true }}
+          trend={{ value: 2, isUp: true }}
         />
         <StatCard 
           title="Medical Records" 
-          value="2,845" 
+          value="12" 
           icon={<FileText size={24} />} 
-          trend={{ value: 8, isUp: true }}
+          trend={{ value: 3, isUp: true }}
         />
         <StatCard 
-          title="Active Doctors" 
-          value="26" 
-          icon={<Activity size={24} />}
+          title="Prescriptions" 
+          value="8" 
+          icon={<Activity size={24} />} 
+          trend={{ value: 1, isUp: true }}
+        />
+        <StatCard 
+          title="Your Doctors" 
+          value="3" 
+          icon={<Users size={24} />}
         />
       </div>
       

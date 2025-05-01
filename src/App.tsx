@@ -14,6 +14,7 @@ import MedicalRecords from "./pages/MedicalRecords";
 import UploadReport from "./pages/UploadReport";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 const queryClient = new QueryClient();
 
@@ -26,16 +27,56 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<Index />} />
-          <Route path="/patients" element={<Patients />} />
-          <Route path="/patients/add" element={<AddPatient />} />
-          <Route path="/doctors" element={<Doctors />} />
-          <Route path="/doctors/schedule" element={<Doctors />} />
-          <Route path="/appointments" element={<Appointments />} />
-          <Route path="/appointments/book" element={<Appointments />} />
-          <Route path="/medical-records" element={<MedicalRecords />} />
-          <Route path="/upload-report" element={<UploadReport />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/dashboard" element={
+            <ProtectedRoute>
+              <Index />
+            </ProtectedRoute>
+          } />
+          <Route path="/patients" element={
+            <ProtectedRoute>
+              <Patients />
+            </ProtectedRoute>
+          } />
+          <Route path="/patients/add" element={
+            <ProtectedRoute>
+              <AddPatient />
+            </ProtectedRoute>
+          } />
+          <Route path="/doctors" element={
+            <ProtectedRoute>
+              <Doctors />
+            </ProtectedRoute>
+          } />
+          <Route path="/doctors/schedule" element={
+            <ProtectedRoute>
+              <Doctors />
+            </ProtectedRoute>
+          } />
+          <Route path="/appointments" element={
+            <ProtectedRoute>
+              <Appointments />
+            </ProtectedRoute>
+          } />
+          <Route path="/appointments/book" element={
+            <ProtectedRoute>
+              <Appointments />
+            </ProtectedRoute>
+          } />
+          <Route path="/medical-records" element={
+            <ProtectedRoute>
+              <MedicalRecords />
+            </ProtectedRoute>
+          } />
+          <Route path="/upload-report" element={
+            <ProtectedRoute>
+              <UploadReport />
+            </ProtectedRoute>
+          } />
+          <Route path="/admin" element={
+            <ProtectedRoute>
+              <Admin />
+            </ProtectedRoute>
+          } />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

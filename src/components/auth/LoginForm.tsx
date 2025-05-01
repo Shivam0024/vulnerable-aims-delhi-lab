@@ -1,16 +1,26 @@
 
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
 
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { toast } = useToast();
   const [credentials, setCredentials] = useState({
     username: '',
     password: '',
     rememberMe: false
   });
+  
+  // Check if user is already logged in on component mount
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+    if (user) {
+      // User is already logged in, redirect to dashboard
+      navigate('/dashboard');
+    }
+  }, [navigate]);
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
@@ -35,7 +36,7 @@ const LoginForm: React.FC = () => {
         title: "Login successful",
         description: `Welcome back, ${credentials.username === 'admin' ? 'Admin' : 'Bharat Electronic'}!`,
       });
-      navigate('/');
+      navigate('/dashboard');
     } else {
       // Vulnerable: SQL Injection risk in a real backend
       // In a real app, this would send to an API, but we'll simulate it
@@ -52,7 +53,7 @@ const LoginForm: React.FC = () => {
   
   return (
     <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-      <h2 className="text-2xl font-bold text-center mb-6 text-hospital-blue">Login to AIMS Hospital</h2>
+      <h2 className="text-2xl font-bold text-center mb-6 text-hospital-blue">Login to AIIMS Hospital</h2>
       
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>

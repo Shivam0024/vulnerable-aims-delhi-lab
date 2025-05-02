@@ -9,6 +9,11 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { FileText, Upload, AlertTriangle } from 'lucide-react';
 
+// Use the correct server URL based on environment
+const API_URL = window.location.hostname === 'localhost' 
+  ? 'http://localhost:3000/api'
+  : `${window.location.protocol}//${window.location.hostname}:3000/api`;
+
 const UploadReport: React.FC = () => {
   const { toast } = useToast();
   const [reportTitle, setReportTitle] = useState('');
@@ -72,8 +77,8 @@ const UploadReport: React.FC = () => {
         fileSize: file.size
       });
       
-      // Upload to backend
-      const response = await fetch('http://localhost:3000/api/upload-report', {
+      // Upload to backend - use the API_URL constant
+      const response = await fetch(`${API_URL}/upload-report`, {
         method: 'POST',
         body: formData,
       });

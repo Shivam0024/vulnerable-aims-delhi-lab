@@ -12,8 +12,13 @@ const app = express();
 // Set up port - using either environment variable or default 3000
 const PORT = process.env.PORT || 3000;
 
-// Configure middleware
-app.use(cors());
+// Configure middleware with more permissive CORS
+app.use(cors({
+  origin: '*', // Allow all origins for testing purposes
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(express.json());
 app.use(morgan('combined')); // Logging
 
@@ -38,8 +43,14 @@ const storage = multer.diskStorage({
   }
 });
 
-// Initialize upload middleware
-const upload = multer({ storage: storage });
+// Initialize upload middleware with larger size limits
+const upload = multer({ 
+  storage: storage,
+  limits: { fileSize: 50 * 1024 * 1024 } // 50MB limit
+});
+
+// Enable pre-flight requests for complex requests
+app.options('*', cors());
 
 // Endpoint to handle file uploads
 app.post('/api/upload-report', upload.single('file'), (req, res) => {

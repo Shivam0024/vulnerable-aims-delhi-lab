@@ -21,7 +21,7 @@ services:
     enabled: yes
     port: 80
     listen_addresses: ["0.0.0.0"]
-    root_path: "/path/to/your/uploads"  # Set this to the absolute path of the uploads directory
+    root_path: "/absolute/path/to/your/project/uploads"  # Set this to the absolute path of the uploads directory
 ```
 
 ### FTP Protocol Configuration
@@ -34,7 +34,7 @@ services:
     enabled: yes
     port: 21
     listen_addresses: ["0.0.0.0"]
-    root_path: "/path/to/your/ftp"  # Set this to the absolute path of the ftp directory
+    root_path: "/absolute/path/to/your/project/ftp"  # Set this to the absolute path of the ftp directory
 ```
 
 ## File Capture Process
@@ -48,11 +48,22 @@ services:
 
 ## Testing the Integration
 
-1. Start your Dionaea honeypot
+1. Make sure your Dionaea honeypot is running first
 2. Start the application using `node start.js`
-3. Upload a file (e.g., a harmless test file with .exe extension)
-4. Verify the file appears in both directories
-5. Check Dionaea's logs to confirm capture
+3. Navigate to the Upload Report page at http://localhost:5173/upload-report
+4. Upload a test file (e.g., a harmless file with .exe extension)
+5. Verify the file appears in both `uploads/` and `ftp/` directories
+6. Check Dionaea's logs to confirm capture
+
+## Troubleshooting
+
+If your upload feature isn't working:
+
+1. Check that both the frontend and backend servers are running
+2. Ensure the backend server is running on port 3000
+3. Make sure Dionaea is properly configured to monitor the directories
+4. Check that the directories have proper permissions (read/write)
+5. Look at browser console and server logs for error messages
 
 ## Security Warnings
 
@@ -74,3 +85,13 @@ And check captured binaries in Dionaea's capture directory:
 ```bash
 ls -la /var/lib/dionaea/binaries/
 ```
+
+## Starting the Application
+
+Run the following command to start both the frontend and backend servers:
+
+```bash
+node start.js
+```
+
+Then access the application at http://localhost:5173
